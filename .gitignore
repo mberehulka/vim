@@ -2,9 +2,9 @@
 !/.gitignore
 
 !/vimfiles/
-!/vimfiles/**
+/vimfiles/**
 
-/vimfiles/plugged/
-/vimfiles/plugged/**
+!/vimfiles/colors/
+!/vimfiles/colors/**
 
 !/.vimrc
