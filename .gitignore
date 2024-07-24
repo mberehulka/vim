@@ -7,4 +7,7 @@
 !/vimfiles/colors/
 !/vimfiles/colors/**
 
+!/vimfiles/autoload/
+!/vimfiles/autoload/**
+
 !/.vimrc

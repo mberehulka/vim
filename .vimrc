@@ -12,6 +12,7 @@ set backspace=indent,eol,start
 set number
 set scrolloff=999
 set guicursor+=a:blinkon0
+set encoding=UTF-8
 syntax on
 filetype plugin indent on
 
@@ -21,7 +22,8 @@ imap <C-x> <ESC>dda
 imap <C-t> <ESC>:tabnew<CR>a
 imap <C-w> <ESC>:tabclose<CR>a
 
-imap <M-r> <ESC>:so %<CR>a
+" imap <M-r> <ESC>:so %<CR>a
+imap <M-r> <ESC>:so ~/.vimrc<CR>a
 imap <M-z> <ESC>ua
 imap <M-S-z> <ESC><C-r>a
 
@@ -41,7 +43,12 @@ imap <M-d> <RIGHT>
 imap <M-S-a> <C-LEFT>
 imap <M-S-d> <C-RIGHT>
 imap <M-m> <END>
-imap <M-n> <HOME>
+imap <M-n> <ESC>^i
+
+imap <c-i> <ESC>:wincmd k<CR>a
+imap <c-j> <ESC>:wincmd h<CR>a
+imap <c-k> <ESC>:wincmd j<CR>a
+imap <c-l> <ESC>:wincmd l<CR>a
 
 imap <M-i> <ESC>O
 imap <M-k> <ESC>o
@@ -56,6 +63,16 @@ imap <M-o> <ESC>:tabn<CR>a
 
 imap <M-S-i> <ESC>:m -2<CR>a
 imap <M-S-j> <ESC>:m +1<CR>a
+imap <M-1> <ESC>1gta
+imap <M-2> <ESC>2gta
+imap <M-3> <ESC>3gta
+imap <M-4> <ESC>4gta
+imap <M-5> <ESC>5gta
+imap <M-6> <ESC>6gta
+imap <M-7> <ESC>7gta
+imap <M-8> <ESC>8gta
+imap <M-9> <ESC>9gta
+imap <M-0> <ESC>10gta
 
 " Visual mode
 imap <M-v> <ESC>v
@@ -93,6 +110,8 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'mattn/vim-lsp-icons'
 
 call plug#end()
 
@@ -109,3 +128,4 @@ set foldmethod=expr
   \ foldtext=lsp#ui#vim#folding#foldtext()
 
 " CheckHealth
+colorscheme onedark
