@@ -56,23 +56,26 @@ imap <M-k> <ESC>o
 imap <M-q> <Backspace>
 imap <M-e> <Delete>
 imap <M-S-e> X<ESC>ce
-imap <M-S-q> <ESC>ldbi
+imap <M-S-q> <C-\><C-O>db
 
+imap <M-S-i> <ESC>:m -2<CR>a
+imap <M-S-k> <ESC>:m +1<CR>a
+imap <M-1> <ESC>v1gta
+imap <M-2> <ESC>v2gta
+imap <M-3> <ESC>v3gta
+imap <M-4> <ESC>v4gta
+imap <M-5> <ESC>v5gta
+imap <M-6> <ESC>v6gta
+imap <M-7> <ESC>v7gta
+imap <M-8> <ESC>v8gta
+imap <M-9> <ESC>v9gta
+imap <M-0> <ESC>v10gta
 imap <M-u> <ESC>:tabp<CR>a
 imap <M-o> <ESC>:tabn<CR>a
 
-imap <M-S-i> <ESC>:m -2<CR>a
-imap <M-S-j> <ESC>:m +1<CR>a
-imap <M-1> <ESC>1gta
-imap <M-2> <ESC>2gta
-imap <M-3> <ESC>3gta
-imap <M-4> <ESC>4gta
-imap <M-5> <ESC>5gta
-imap <M-6> <ESC>6gta
-imap <M-7> <ESC>7gta
-imap <M-8> <ESC>8gta
-imap <M-9> <ESC>9gta
-imap <M-0> <ESC>10gta
+" Multi cursor
+imap <M-S-k> <ESC><C-DOWN>
+imap <M-S-i> <ESC><C-UP>
 
 " Visual mode
 imap <M-v> <ESC>v
@@ -96,6 +99,7 @@ vmap x :d<CR>
 
 " NERDTree
 imap <M-f> <ESC>:NERDTreeFocus<CR>
+" m to new file and other commands
 
 " Plugins
 " install vim-plug: https://github.com/junegunn/vim-plug
@@ -127,5 +131,24 @@ set foldmethod=expr
   \ foldexpr=lsp#ui#vim#folding#foldexpr()
   \ foldtext=lsp#ui#vim#folding#foldtext()
 
+" Use <c-space> to trigger completion
+imap <silent><expr> <c-space> coc#refresh()
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+imap <F2> <ESC><Plug>(coc-rename)
+imap <silent> <F12> <ESC>:call CocAction('jumpDefinition', 'tabe')<CR>a
+
 " CheckHealth
 colorscheme onedark
+
+" Code folding
+set foldmethod=syntax "syntax highlighting items specify folds
+set foldcolumn=1
+set foldlevelstart=99 "start file with all folds opened
+
+" Actions
+imap <silent> <F3> <ESC>:!cargo run<CR>
